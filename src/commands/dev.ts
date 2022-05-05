@@ -7,7 +7,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import type { EventEmitter } from 'events';
 import { version as tsVersion } from 'typescript';
 import fileSize from 'filesize';
-import { Logger } from '@/utils';
+import { getDbStatus, Logger } from '@/utils';
 import os from 'node:os';
 import type { embedDevInfoParams } from '@/embeds';
 import { embedDevInfo } from '@/embeds';
@@ -34,6 +34,9 @@ export const devCommand = {
       userId: interaction.user.id,
       botId: interaction.client.user?.id ?? '',
       developer: `<@${process.env.DEVELOPER_ID ?? 0}>`,
+      services: {
+        database: getDbStatus()
+      }
     };
 
     await interaction.reply({

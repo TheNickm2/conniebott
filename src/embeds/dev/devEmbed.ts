@@ -11,6 +11,9 @@ export interface embedDevInfoParams {
   userId: string;
   botId: string;
   developer: string;
+  services?: {
+    database?: string;
+  };
 }
 
 export function embedDevInfo(params: embedDevInfoParams) {
@@ -22,6 +25,10 @@ export function embedDevInfo(params: embedDevInfoParams) {
     {
       name: 'Memory',
       value: `Heap: ${params.heapSize}\nUsed: ${params.heapUsed}`,
+    },
+    {
+      name: 'Services',
+      value: `Database: ${params.services?.database}`,
     },
     {
       name: 'IDs',
