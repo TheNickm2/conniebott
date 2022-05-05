@@ -9,6 +9,7 @@ export interface embedDevInfoParams {
   hostname: string;
   serverId: string;
   userId: string;
+  botId: string;
   developer: string;
 }
 
@@ -24,7 +25,7 @@ export function embedDevInfo(params: embedDevInfoParams) {
     },
     {
       name: 'IDs',
-      value: `Server: ${params.serverId}\nUser: ${params.userId}\nDeveloper: ${params.developer}`,
+      value: `Server: ${params.serverId}\nBot: ${params.botId}\nUser: ${params.userId}\nDeveloper: ${params.developer}`,
     },
   ]);
 }

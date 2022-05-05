@@ -32,11 +32,12 @@ export const devCommand = {
       hostname: os.hostname(),
       serverId: interaction.guildId ?? 'unknown',
       userId: interaction.user.id,
+      botId: interaction.client.user?.id ?? '',
       developer: `<@${process.env.DEVELOPER_ID ?? 0}>`,
     };
 
     await interaction.reply({
-      ephemeral: true,
+      ephemeral: false,
       embeds: [embedDevInfo(devVars)],
     });
   },

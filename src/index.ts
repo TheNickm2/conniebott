@@ -11,8 +11,9 @@ const Emitter = new EventEmitter();
 function Main() {
   try {
     const botToken = process.env.BOT_TOKEN;
-    if (!botToken) {
-      Logger.error('BOT_TOKEN environment variable is required.');
+    const redisDbString = process.env.REDIS_DB_STRING;
+    if (!botToken || !redisDbString) {
+      Logger.error('BOT_TOKEN and REDIS_DB_STRING environment variables are required.');
       return;
     }
 
